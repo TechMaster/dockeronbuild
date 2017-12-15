@@ -52,7 +52,7 @@ docker run -d --name customnode -p 3000:3000 customnode:latest
 curl http://localhost:3000
 ```
 
-Khi image customnode được build thư mục myweb sẽ được copy vào /usr/src/app trong image. Nếu trong myweb có node_modules thì số lượng file copy sẽ rất lớn. Do đó hãy tạo .dockerignore như sau
+Khi image customnode được build thư mục myweb sẽ được copy vào /usr/src/app trong image. Nếu trong myweb có node_modules thì số lượng file copy sẽ rất lớn. Do đó hãy tạo .dockerignore như sau. Nó sẽ không COPY node_modules, .DS_Store, các file markdown và txt ở thư mục myweb vào docker image trong quá trình build.
 ```
 myweb/node_modules
 .DS_Store
@@ -60,9 +60,9 @@ myweb/*.md
 myweb/*.txt
 ```
 
-**Kiểm tra trong thư mục /usr/src/app có file *.md hay *.txt không **
+Kiểm tra nội dung thư mục /usr/src/app
 ```
-docker exec -it customnode /bin/ash
+docker exec -it customnode ls
 # ls
 ```
 
