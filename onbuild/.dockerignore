@@ -1,0 +1,4 @@
+myweb/node_modules
+.DS_Store
+myweb/*.md
+myweb/*.txt
